@@ -20,8 +20,7 @@ const SignIn = () => {
     }
 
     const signInWithGoogle = async () => {
-        const res = await signInWithGooglePopUp()
-        await createUserDocumentFromAuth(res.user)
+        await signInWithGooglePopUp()
     }
 
     const handleChange = (e) => {
@@ -35,6 +34,7 @@ const SignIn = () => {
 
         try {
             const res = await signInAuthUserWithEmailAndPassword(email, password);
+
             resetFormFields()
         } catch (err) {
             switch (err.code) {
@@ -54,7 +54,7 @@ const SignIn = () => {
 
     return (
         <div className='signin-container'>
-            <h1>Already have an account?</h1>
+            <h2>Already have an account?</h2>
             <span>Sign in with your email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput 

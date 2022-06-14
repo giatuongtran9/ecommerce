@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import "./SignUp.scss"
 
 import FormInput from '../../components/FormInput/FormInput';
