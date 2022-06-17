@@ -6,7 +6,8 @@ import { CartContext } from '../../context/cart.context';
 import { ShoppingBag } from '@mui/icons-material'
 
 const Cart = () => {
-    const { isCartOpen, setIsCartOpen } = useContext(CartContext)
+
+    const { itemCount, isCartOpen, setIsCartOpen } = useContext(CartContext)
 
     const toggleCartDropDown = () => {
         setIsCartOpen(!isCartOpen)
@@ -15,7 +16,7 @@ const Cart = () => {
     return (
         <div className='cart-container' onClick={toggleCartDropDown}>
             <ShoppingBag className='cart-icon'/>
-            <span className='cart-itemCount'>0</span>
+            <span className='cart-itemCount'>{itemCount}</span>
         </div>
     );
 };

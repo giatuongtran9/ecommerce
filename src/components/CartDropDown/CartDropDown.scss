@@ -18,9 +18,10 @@
 
 
     .cartDropdown-items {
-        height: 240px;
+        height: 300px;
         display: flex;
         flex-direction: column;
+        overflow: scroll;
     }
 
     button {
