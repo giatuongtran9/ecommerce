@@ -16,9 +16,6 @@ const NavBar = () => {
 
   const { currentUser } = useContext(UserContext)
   const { isCartOpen } = useContext(CartContext)
-  console.log(currentUser)
-
-
 
   return (
     <>
