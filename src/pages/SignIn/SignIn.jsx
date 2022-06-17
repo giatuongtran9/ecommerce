@@ -3,7 +3,7 @@ import './SignIn.scss'
 import Button from '../../components/Button/Button';
 import FormInput from '../../components/FormInput/FormInput';
 
-import { createUserDocumentFromAuth, signInWithGooglePopUp, signInAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils'
+import { signInWithGooglePopUp, signInAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils'
 
 const defaultValue = {
     email: '',
@@ -33,7 +33,7 @@ const SignIn = () => {
         e.preventDefault();
 
         try {
-            const res = await signInAuthUserWithEmailAndPassword(email, password);
+            await signInAuthUserWithEmailAndPassword(email, password);
 
             resetFormFields()
         } catch (err) {
