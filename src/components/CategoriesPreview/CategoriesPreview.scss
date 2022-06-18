@@ -1,0 +1,17 @@
+.categoriesPreview-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+
+    .categoriesPreview-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        cursor: pointer;
+    }
+
+    .categoriesPreview-preview {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 20px;
+    }
+}

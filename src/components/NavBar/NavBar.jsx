@@ -1,5 +1,6 @@
 import { Outlet, Link } from 'react-router-dom';
-import "./NavBar.scss"
+import { NavContainer, LogoContainer, NavLinkContainer, NavLink } from "./NavBar.style.jsx"
+
 import { useContext } from 'react';
 
 import { UserContext } from '../../context/user.context';
@@ -19,27 +20,27 @@ const NavBar = () => {
 
   return (
     <>
-      <div className='navbar'>
-        <Link className='logo-container' to='/'>
+      <NavContainer>
+        <LogoContainer to='/'>
           <Instagram />
-        </Link>
-        <div className='nav-links-container'>
-          <Link className='nav-link' to='/shop'>
+        </LogoContainer>
+        <NavLinkContainer>
+          <NavLink to='/shop'>
             SHOP
-          </Link>
+          </NavLink>
           {currentUser ? (
-            <span className='nav-link' onClick={signOutUser}>
+            <NavLink as='span' onClick={signOutUser}>
               SIGN OUT
-            </span>
+            </NavLink>
           ) : (
-            <Link className='nav-link' to='/auth'>
+            <NavLink to='/auth'>
               SIGN IN
-            </Link>
+            </NavLink>
           )}
           <Cart />
-        </div>
+        </NavLinkContainer>
         {isCartOpen && <CartDropDown />}
-      </div>
+      </NavContainer>
       <Outlet />
     </>
   );

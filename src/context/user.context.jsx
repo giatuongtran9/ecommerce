@@ -20,7 +20,7 @@ export const UserContextProvider = ({ children }) => {
             if (user) {
                 createUserDocumentFromAuth(user)
             }
-            console.log(user)
+
             setCurrentUser(user);
           });
       
