@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './SignIn.scss'
-import Button from '../../components/Button/Button';
+
+import { useNavigate } from 'react-router-dom';
+
+import Button, { BUTTON_TYPE } from '../../components/Button/Button';
 import FormInput from '../../components/FormInput/FormInput';
 
 import { signInWithGooglePopUp, signInAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils'
@@ -12,6 +15,7 @@ const defaultValue = {
 
 const SignIn = () => {
 
+    const navigate = useNavigate()
     const [formFields, setFormFields] = useState(defaultValue);
     const { email, password } = formFields
 
@@ -36,6 +40,8 @@ const SignIn = () => {
             await signInAuthUserWithEmailAndPassword(email, password);
 
             resetFormFields()
+
+            navigate("/")
         } catch (err) {
             switch (err.code) {
                 case 'auth/wrong-password':
@@ -77,7 +83,7 @@ const SignIn = () => {
 
                 <div className="buttons-container">
                     <Button type="submit">Sign In</Button>
-                    <Button type="button" buttonType="google" onClick={signInWithGoogle}>Google Sign In</Button>
+                    <Button type="button" buttonType={BUTTON_TYPE.google} onClick={signInWithGoogle}>Google Sign In</Button>
                 </div>
             </form>
         </div>

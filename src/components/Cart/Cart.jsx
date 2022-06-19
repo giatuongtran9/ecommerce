@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
-import "./Cart.scss"
+import { CartContainer, CartIcon, CartItemCount} from "./Cart.style.jsx"
 
 import { CartContext } from '../../context/cart.context';
-
-import { ShoppingBag } from '@mui/icons-material'
 
 const Cart = () => {
 
@@ -14,10 +12,10 @@ const Cart = () => {
     }
 
     return (
-        <div className='cart-container' onClick={toggleCartDropDown}>
-            <ShoppingBag className='cart-icon'/>
-            <span className='cart-itemCount'>{itemCount}</span>
-        </div>
+        <CartContainer onClick={toggleCartDropDown}>
+            <CartIcon className='override'/>
+            <CartItemCount>{itemCount}</CartItemCount>
+        </CartContainer>
     );
 };
 
