@@ -1,5 +1,10 @@
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import './categories.scss';
 import { Routes, Route} from 'react-router-dom'
+
+import { onAuthStateChangedListener, createUserDocumentFromAuth } from './utils/firebase/firebase.utils'
+import { setCurrentUser } from './store/user/user.action'
 
 import Home from './pages/Home/Home';
 import NavBar from './components/NavBar/NavBar';
@@ -8,6 +13,22 @@ import Shop from './pages/Shop/Shop';
 import CheckOut from './pages/CheckOut/CheckOut';
 
 const App = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+
+        // if sign in
+        if (user) {
+            createUserDocumentFromAuth(user)
+        }
+
+        dispatch(setCurrentUser(user));
+      });
+  
+      return unsubscribe;
+  }, [])
+
   return (
     <Routes>
       <Route path="/" element={ <NavBar />}>

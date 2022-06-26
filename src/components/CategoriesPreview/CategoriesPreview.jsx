@@ -1,14 +1,18 @@
 import React, { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import "./CategoriesPreview.scss"
 
 import { Link } from 'react-router-dom'
 
-import { CategoriesContext } from '../../context/caterogies.context';
+// import { CategoriesContext } from '../../context/caterogies.context';
+
+import { selectCategories } from '../../store/categories/categories.selector'
 
 import Product from '../Product/Product';
 
 const CategoriesPreview = () => {
-    const { categories } = useContext(CategoriesContext)
+    // const { categories } = useContext(CategoriesContext)
+    const categories = useSelector(selectCategories)
 
     return (
         <>
