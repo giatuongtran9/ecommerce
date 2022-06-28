@@ -6,6 +6,10 @@
     align-items: center;
     margin: 50px auto;
 
+    @media screen and (max-width: 800px) {
+        width: 80%;
+    }
+
     .checkout-top {
         width: 100%;
         display: flex;
@@ -16,6 +20,10 @@
         .checkout-title {
             text-transform: capitalize;
             width: 23%;
+
+            @media screen and (max-width: 800px) {
+                font-size: 12px;
+            }
 
             &:last-child {
                 width: 8%;

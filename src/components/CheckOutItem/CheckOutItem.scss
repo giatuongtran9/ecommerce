@@ -5,6 +5,11 @@
     border-bottom: 1px solid darkgrey;
     padding: 15px 0;
     align-items: center;
+    // justify-content: space-between;
+
+    @media screen and (max-width: 800px) {
+        justify-content: space-evenly;
+    }
 
     .checkoutItem-image {
         width: 23%;
@@ -20,18 +25,27 @@
     .checkoutItem-quantity,
     .checkoutItem-price {
         width: 23%;
+
+        @media screen and (max-width: 800px) {
+            font-size: 12px;
+        }
     }
 
     .checkoutItem-quantity {
         display: flex;
-
+        align-items: center;
         .arrow-right,
         .arrow-left {
             cursor: pointer;
         }
 
+
         .count {
             margin: 0 10px;
+
+            @media screen and (max-width: 800px) {
+                margin: unset;
+            }
         }
     }
 
