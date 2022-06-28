@@ -3,20 +3,22 @@ import { useSelector } from 'react-redux';
 import "./CategoriesPreview.scss"
 
 import { Link } from 'react-router-dom'
-
+import { CircularProgress } from '@mui/material'
 // import { CategoriesContext } from '../../context/caterogies.context';
 
-import { selectCategories } from '../../store/categories/categories.selector'
+import { selectCategories, selectCategoriesIsLoading } from '../../store/categories/categories.selector'
 
 import Product from '../Product/Product';
 
 const CategoriesPreview = () => {
     // const { categories } = useContext(CategoriesContext)
     const categories = useSelector(selectCategories)
+    const isLoading = useSelector(selectCategoriesIsLoading)
 
     return (
         <>
-            {Object.keys(categories).map((title) => {
+            { isLoading ? <CircularProgress /> :
+            (Object.keys(categories).map((title) => {
                 const products = categories[title]
 
                 return (
@@ -31,7 +33,8 @@ const CategoriesPreview = () => {
                         </div>
                     </div>
                 )
-            })}
+            }))
+            }
         </>
     );
 };

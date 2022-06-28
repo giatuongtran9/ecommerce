@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import './categories.scss';
 import { Routes, Route} from 'react-router-dom'
 
 import { onAuthStateChangedListener, createUserDocumentFromAuth } from './utils/firebase/firebase.utils'
@@ -11,6 +10,8 @@ import NavBar from './components/NavBar/NavBar';
 import Authentication from './pages/Authentication/Authentication';
 import Shop from './pages/Shop/Shop';
 import CheckOut from './pages/CheckOut/CheckOut';
+
+import { GlobalStyle } from './global.styles'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -30,14 +31,17 @@ const App = () => {
   }, [])
 
   return (
-    <Routes>
-      <Route path="/" element={ <NavBar />}>
-        <Route index element={ <Home />} />
-        <Route path="shop/*" element={ <Shop />} />
-        <Route path="auth" element={ <Authentication />} />
-        <Route path="checkout" element={ <CheckOut /> } />
-      </Route>
-    </Routes>
+    <>
+      <GlobalStyle />
+      <Routes>
+        <Route path="/" element={ <NavBar />}>
+          <Route index element={ <Home />} />
+          <Route path="shop/*" element={ <Shop />} />
+          <Route path="auth" element={ <Authentication />} />
+          <Route path="checkout" element={ <CheckOut /> } />
+        </Route>
+      </Routes>
+    </>
   );
 }
 

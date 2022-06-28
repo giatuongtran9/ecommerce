@@ -42,7 +42,7 @@ export const CategoryItemContainer = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  // margin: 0 7.5px 15px;
+  margin: 0 7.5px 15px;
   overflow: hidden;
 
   &:hover {
@@ -58,21 +58,25 @@ export const CategoryItemContainer = styled.div`
     }
   }
 
-  &:first-child {
-    margin-right: 10px;
-  }
+  /* &:first-child {
+    margin-right: 7.5px;
+  } */
 
-  &:nth-child(2) {
+  /* &:nth-child(2) {
     margin-right: 10px;
   }
 
   &:nth-child(4) {
     margin-top: 15px;
-  }
+  } */
 
-  &:last-child {
+  /* &:last-child {
     margin-left: 7.5px;
-    margin-top: 15px;
+    /* margin-top: 15px; 
+  } */
+
+  @media screen and (max-width: 800px) {
+    height: 200px;
   }
 `
 

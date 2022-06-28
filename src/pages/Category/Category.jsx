@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import "./Category.scss"
 
-import { selectCategories } from '../../store/categories/categories.selector';
+import { CircularProgress } from '@mui/material'
+
+import { selectCategories, selectCategoriesIsLoading } from '../../store/categories/categories.selector';
 
 import Product from '../../components/Product/Product';
 
@@ -13,7 +15,8 @@ import Product from '../../components/Product/Product';
 const Category = () => {
     // const { categories } = useContext(CategoriesContext)
     const categories = useSelector(selectCategories)
-
+    const isLoading = useSelector(selectCategoriesIsLoading)
+console.log(isLoading)
     const { category } = useParams()
     const [products, setProducts] = useState(categories[category])
 
@@ -25,11 +28,17 @@ const Category = () => {
     return (
         <div>
             <h2 className="category-title">{category.toUpperCase()}</h2>
-            <div className="category-container">
-                {products && products.map((product) => (
-                    <Product key={product.id} product={product} />
-                ))}
-            </div>
+            {
+                isLoading ? 
+                (<CircularProgress />) 
+                : 
+                (<div className="category-container">
+                    {products && products.map((product) => (
+                        <Product key={product.id} product={product} />
+                    ))}
+                </div>)
+            }
+
         </div>
     );
 };
