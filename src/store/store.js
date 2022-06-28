@@ -31,7 +31,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 const middlewares = [process.env.NODE_ENV === 'development' && logger, thunk].filter(Boolean)
 
 const composeEnhancer = (process.env.NODE_ENV === 'development' && window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
-const composeEnhancers = composeEnhancer(applyMiddleware(...middlewares))
+const composeEnhancers = compose(applyMiddleware(...middlewares))
 
 export const store = createStore(persistedReducer, undefined, composeEnhancers)
 
